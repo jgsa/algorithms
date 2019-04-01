@@ -8,11 +8,12 @@ end
 
 def merge(left, right)
     new_array = []
-    new_array << (left.first <= right.first ?  left.delete(left.first) : right.delete(right.first)) until left.empty? or right.empty?
-    new_array << left.delete(left.first) until left.empty?
-    new_array << right.delete(right.first) until right.empty?
+    new_array << (left.first <= right.first ?  left.shift : right.shift) until left.empty? or right.empty?
+    new_array << left.shift until left.empty?
+    new_array << right.shift until right.empty?
     new_array
 end
 
-array = gets.split(' ')
+array = gets.split.map(&:to_i)
+puts array.first.class
 print merge_sort(array)
