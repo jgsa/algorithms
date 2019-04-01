@@ -13,16 +13,16 @@ def count_islands(matrix)
     count
 end
 
-def search(matrix, r, c, visits, n)
- 
+def search(matrix, r, c, visits, n, island_size)
     visits[r][c] = true
     neighbors_cols = [-1, -1, -1,  0, 0,  1, 1, 1] 
     neighbors_rows = [-1,  0,  1, -1, 1, -1, 0, 1]
     for x in 0...8 do
         row = r + neighbors_rows[x]
         col = c + neighbors_cols[x]
-        search(matrix, row, col, visits, n) if ((row >= 0) and (row < n) and (col >= 0) and (col < n) and (matrix[row][col] == 'l' and !visits[row][col]))
+        search(matrix, row, col, visits, n, island_size) if ((row >= 0) and (row < n) and (col >= 0) and (col < n) and (matrix[row][col] == 'l' and !visits[row][col]))
     end
+
 end
 
 #matrix = [
